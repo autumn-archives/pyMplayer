@@ -47,7 +47,9 @@ class View:
                     orientation='h',key='-volume_slider1-',enable_events=True),
                 sg.Button('q',key='-loop_Btn1-',font=('Webdings',10)),
                 sg.Button('Change Theme',key='-change_theme-'),
-            ],]
+                sg.Button('=' ,key='-save_theme-',font=('Wingdings',10))
+            ],
+            ]
         return sg.Window(title="pyMplayer",layout=layout,finalize=True)
 
 
@@ -141,6 +143,9 @@ class View:
     def readerror_popup(self):
         sg.popup_ok('ファイルが読み込めませんでした。')
 
+    def save_theme(self):
+        send_controller_theme = sg.theme()
+        self.controller.save_theme_send_model(send_controller_theme)
 
     def main(self,save_theme):
         
@@ -195,6 +200,8 @@ class View:
                     self.window = self.make_window(values['-theme_list-'])
                     self.window['-file1-'].update(self.controller.file_pass_send_view())
 
+            elif event == '-save_theme-':
+                self.save_theme()
                     
             
             if self.play_running == True:   #再生中のシークバー制御

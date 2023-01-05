@@ -66,6 +66,9 @@ class Controller:
         else:
             self.model.set_ini_file()
 
+    def save_theme_send_model(self,save_theme):
+        self.model.set_ini_file(save_theme)
+
         
 
     
