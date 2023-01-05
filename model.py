@@ -3,6 +3,8 @@ import pygame
 from pygame import mixer
 import audioread.exceptions
 import librosa
+import configparser
+import os
 
 
 
@@ -13,6 +15,9 @@ class Model:
     def __init__(self,controller):
         self.controller = controller
         self.sr = 44100
+        self.config = configparser.ConfigParser()
+        self.dirname = os.path.dirname(__file__)
+        self.ini_basename = 'config.ini'
         mixer.init(frequency = self.sr)
     
     def music_load(self,file_pass):
@@ -50,6 +55,18 @@ class Model:
 
     def set_volume(self,vol_value):
         mixer.music.set_volume(vol_value)
+
+    def set_ini_file(self,theme='Dark Brown1'):
+        self.config['BASE'] = {
+        '-theme-': theme
+        }
+        with open(os.path.join(self.dirname, self.ini_basename), 'w') as file:
+            self.config.write(file)
+
+    def get_ini_file_theme(self):
+        self.config.read(os.path.join(self.dirname, self.ini_basename))
+        return self.config['BASE']['-theme-']
+
 
     '''
     def total_second_convert(self,total_second):

@@ -142,9 +142,9 @@ class View:
         sg.popup_ok('ファイルが読み込めませんでした。')
 
 
-    def main(self):
+    def main(self,save_theme):
         
-        self.window = self.make_window()
+        self.window = self.make_window(save_theme)
         while True:
             # ウィンドウ表示
             event, values = self.window.read(timeout=100)

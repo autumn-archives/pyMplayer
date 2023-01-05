@@ -2,18 +2,21 @@
 
 from model import Model
 from view import View
-import PySimpleGUI as sg
+import os
 
 class Controller:
     def __init__(self):
         self.model = Model(self)
         self.view = View(self)
         self.file_pass = ""
+        self.save_theme = 'Dark Brown1'
+        self.dirname = os.path.dirname(__file__)
+        self.ini_basename = 'config.ini'
 
 
 
-    def main(self):
-        self.view.main()
+    def main(self,save_theme):
+        self.view.main(save_theme)
 
     def file_load(self,file_pass):
         try:
@@ -54,6 +57,15 @@ class Controller:
 
     def file_readerror_send_view(self):
         self.view.readerror_popup()
+
+    def ini_file_exists(self):
+        if os.path.exists(os.path.join(self.dirname, self.ini_basename)):
+            self.save_theme = str(self.model.get_ini_file_theme())
+            print(self.save_theme)
+
+        else:
+            self.model.set_ini_file()
+
         
 
     
@@ -61,4 +73,5 @@ class Controller:
 
 if __name__ == '__main__':
     music_player = Controller()
-    music_player.main()
+    music_player.ini_file_exists()
+    music_player.main(music_player.save_theme)
