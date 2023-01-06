@@ -146,6 +146,7 @@ class View:
     def save_theme(self):
         send_controller_theme = sg.theme()
         self.controller.save_theme_send_model(send_controller_theme)
+        sg.popup('theme_saved!')
 
     def main(self,save_theme):
         
@@ -202,6 +203,7 @@ class View:
 
             elif event == '-save_theme-':
                 self.save_theme()
+                
                     
             
             if self.play_running == True:   #再生中のシークバー制御
