@@ -36,6 +36,7 @@ class Model:
     def play_music(self,loops,start):
         try:
             mixer.music.play(loops,start)
+        #ボタンを押してもエラー落ちしないようにこれらのエラーはパスしておく。
         except NameError:
             pass
         except FileNotFoundError:
