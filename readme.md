@@ -35,10 +35,10 @@ pip install configparser
 
 # Usage
 
-controllerをPythonで実行してください。
+main.pyをPythonで実行してください。
 
 ```bash
-python controller.py
+python main.py
 ```
 
-"hoge" is Confidential.
+"pyMplayer" is Confidential.
