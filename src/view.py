@@ -118,6 +118,14 @@ class View:
         self.vol_value = values[slider_name]
         self.controller.volume_slider_controller(self.vol_value)
 
+    
+    def push_loop(self,values):
+        #ループ用ボタンのイベント。-1の時ループする。0はしない。
+        self.loop_flg = not self.loop_flg
+        self.loops = -1 if self.loop_flg else 0
+        self.button_color_change(self.loop_flg,'-loop_Btn1-')
+        self.move_seek_slider(values,'-seek_slider1-')
+
 
     def hms_view_update(self,total_second):
         self.hms_view_max = total_second
@@ -180,11 +188,8 @@ class View:
             elif event == '-seek_slider1-':
                 self.move_seek_slider(values,'-seek_slider1-')
 
-            elif event == '-loop_Btn1-':    #ループ用ボタンのイベント。-1の時ループする。0はしない。
-                self.loop_flg = not self.loop_flg
-                self.loops = -1 if self.loop_flg else 0
-                self.button_color_change(self.loop_flg,'-loop_Btn1-')
-                self.move_seek_slider(values,'-seek_slider1-')
+            elif event == '-loop_Btn1-':    
+                self.push_loop(values)
 
             elif event == '-change_theme-':
                 event, values = sg.Window('Choose Theme', [[sg.Combo(sg.theme_list(), readonly=True, key='-theme_list-'), sg.OK(), sg.Cancel()]]).read(close=True)

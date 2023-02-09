@@ -1,7 +1,7 @@
 
 
-from model import Model
-from view import View
+from src.model import Model
+from src.view import View
 import os
 
 class Controller:
@@ -75,7 +75,3 @@ class Controller:
         self.model.set_ini_file(save_theme)
 
         
-if __name__ == '__main__':
-    music_player = Controller()
-    music_player.ini_file_exists()
-    music_player.main(music_player.save_theme)
