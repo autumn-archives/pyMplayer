@@ -110,7 +110,6 @@ class View:
         self.hms_view_now = values[slider_name]
 
         if self.play_running == True:
-            #self.play_running = False   #一旦止める。動かすのが難しい。
             self.push_play()
             self.play_running = True
 
