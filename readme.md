@@ -24,21 +24,37 @@ change_theneボタンから、テーマの一覧を表示して、好きなテ�
 ![theme_list](https://user-images.githubusercontent.com/124559210/218655925-d8f3fc24-3fe0-4cd4-b268-1884255e5618.jpg)
 # Requirement
 
+Python3と以下のライブラリが必要になります。
 
-* Python                    3.10.5
+* Python 3                  3.10.5
 * PySimpleGUI               4.60.1
-* pygame                    2.1.2
+* PyGame                    2.1.2
 * librosa                   0.9.2
 * configparser              5.3.0
 
 
 # Installation
 
+ソースコードから実行するには、Python３と以下のライブラリをインストールした上で実行してください。
 
 ```bash
-pip install PySimpleGUI
+Python 3
+https://www.python.org/downloads/
+
+PySimpleGUI
+https://github.com/PySimpleGUI/PySimpleGUI
+pip install pysimpleGUI
+
+PyGame
+https://www.pygame.org/
 pip install pygame
+
+librosa
+https://librosa.org/
 pip install librosa
+
+configparser
+https://pypi.org/project/configparser/
 pip install configparser
 ```
 
